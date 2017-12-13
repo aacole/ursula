@@ -27,12 +27,6 @@
   until: result|succeeded
   retries: 5
 
-- name: updating pyopenssl separately to preserve functionality
-  pip: name=pyopenssl version=17.2.0 state=present
-  register: result
-  until: result|succeeded
-  retries: 5
-
 - include: CVE-2015-0235.yml
   when: ansible_architecture != "ppc64le"
   tags: CVE-2015-0235

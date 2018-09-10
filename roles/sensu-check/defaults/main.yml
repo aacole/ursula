@@ -56,7 +56,14 @@ sensu_checks:
       standalone: true
       command: "sudo check-netif.rb -c {{monitoring.checks.network_interface_traffic.critical}} -w {{monitoring.checks.network_interface_traffic.warning}} --interfaces {{monitoring.checks.network_interface_traffic.interface}}"
       service_owner: openstack
-
+    check_fs_writable:
+      auto_resolve: true
+      handler: default
+      interval: 600
+      occurences: 2
+      standalone: true
+      command: "sudo check-fs-writable.sh"
+      service_owner: openstack
 
   neutron:
     check_neutron_agents:
